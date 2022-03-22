@@ -1,20 +1,20 @@
 package com.amit;
 
-import java.util.Locale;
+
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        String frase, frase1, frase2;
-        frase1 = " ";
-        frase2 = "";
+        String frase, palabra2, palabra3, palabra4;
+
         int numero, count;
         char caracter1, caracter2;
+
         System.out.print("Escribe una frase: ");
         frase = entrada.nextLine();
-        frase = ' ' + frase;
+
         do {
             System.out.println("MENU: ");
             System.out.println("========================");
@@ -38,10 +38,11 @@ public class Main {
                 System.out.println();
 
             } else if (numero == 2) {
-                for (int i = 0; i < frase.length(); i++) {
-                    if (frase.charAt(i) == ' ') {
-                        frase2 = String.valueOf(frase.charAt(i + 1)) + " ";
-                        System.out.print(frase2.toUpperCase());
+                String fraseCopy = " " + frase;
+                for (int i = 0; i < fraseCopy.length(); i++) {
+                    if (fraseCopy.charAt(i) == ' ') {
+                        palabra2 = fraseCopy.charAt(i + 1) + " ";
+                        System.out.print(palabra2.toUpperCase());
                     }
                 }
                 System.out.println();
@@ -49,24 +50,46 @@ public class Main {
                 System.out.println();
 
             } else if (numero == 3) {
+                palabra3 = "";
                 System.out.println("Dame dos caracteres:");
                 System.out.print("Dame caracter 1 : ");
                 caracter1 = entrada.next().charAt(0);
                 System.out.print("Dame caracter 2 : ");
                 caracter2 = entrada.next().charAt(0);
 
-            } else if (numero == 4) {
-                for (int i = frase.length() - 1; i >= 0; i--) {
-                    frase1 = frase1 + frase.charAt(i);
+                for (int i = 0; i < frase.length(); i++) {
+                    if (frase.charAt(i) == caracter1) {
+                        palabra3 = palabra3 + caracter2;
+                    } else {
+                        palabra3 = palabra3 + frase.charAt(i);
+                    }
+
                 }
-                System.out.print("Al revés de su frase dada es: "+frase1);
+                System.out.println(palabra3);
+                System.out.println();
+                System.out.println();
+                System.out.println();
+
+            } else if (numero == 4) {
+                palabra4 = "";
+                for (int i = frase.length() - 1; i >= 0; i--) {
+                    palabra4 = palabra4 + frase.charAt(i);
+                }
+                System.out.print("Al revés de su frase dada es: "+palabra4);
                 System.out.println();
                 System.out.println();
                 System.out.println();
 
             } else if (numero == 0) {
-            } else ;
+            } else {
+                System.out.println("La opinión no es válida");
+                System.out.println();
+                System.out.println();
+                System.out.println();
+            }
+
         } while (numero != 0);
+
         entrada.close();
     }
 }
